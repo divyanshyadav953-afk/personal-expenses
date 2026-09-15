@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple daily spending tracker for keeping up with everyday expenses.">
+  <title>Daily Spending Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="tracker-card" aria-labelledby="page-title">
+      <header class="tracker-header">
+        <div>
+          <p class="eyebrow">Personal finance, made simple</p>
+          <h1 id="page-title">Daily Spending Tracker</h1>
+          <p class="subtitle">Track your daily expenses easily.</p>
+        </div>
+        <div class="header-mark" aria-hidden="true">₹</div>
+      </header>
+
+      <form id="expense-form" class="expense-form" novalidate>
+        <div class="field-group field-group-name">
+          <label for="expense-name">Expense name</label>
+          <input
+            id="expense-name"
+            name="expenseName"
+            type="text"
+            placeholder="Enter expense name"
+            autocomplete="off"
+            maxlength="80"
+            required
+          >
+        </div>
+        <div class="field-group field-group-amount">
+          <label for="expense-amount">Amount <span>(INR)</span></label>
+          <div class="amount-input">
+            <span aria-hidden="true">₹</span>
+            <input
+              id="expense-amount"
+              name="expenseAmount"
+              type="number"
+              placeholder="Enter amount"
+              inputmode="decimal"
+              min="0.01"
+              step="0.01"
+              required
+            >
+          </div>
+        </div>
+        <button class="add-button" type="submit">
+          <span aria-hidden="true">+</span>
+          Add Expense
+        </button>
+        <p id="form-message" class="form-message" role="alert" aria-live="polite"></p>
+      </form>
+
+      <section class="expense-section" aria-labelledby="expense-list-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Your entries</p>
+            <h2 id="expense-list-title">Recent expenses</h2>
+          </div>
+          <span id="expense-count" class="expense-count">0 items</span>
+        </div>
+
+        <div id="empty-state" class="empty-state">
+          <div class="empty-icon" aria-hidden="true">+</div>
+          <p>No expenses added yet.</p>
+          <span>Add your first expense above to get started.</span>
+        </div>
+        <ul id="expense-list" class="expense-list" aria-live="polite"></ul>
+      </section>
+
+      <footer class="total-section">
+        <span>Total spending</span>
+        <strong id="total-amount">₹0.00</strong>
+      </footer>
+    </section>
+    <p class="page-note">Your expenses are saved in this browser.</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
